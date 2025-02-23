@@ -65,90 +65,90 @@ This workflow ensures end-to-end operational control, from data input to optimiz
 
 ## 🧮 **Mathematical Models and Algorithms**
 
-KaalPath's optimization relies on a suite of mathematical models and algorithms tailored for logistics. Below is a detailed breakdown with proper LaTeX formatting:
+KaalPath's optimization relies on a suite of mathematical models and algorithms tailored for logistics. Below is a detailed breakdown with LaTeX formatting using the ` ```math ` style:
 
 ### **Shipment Risk and Time Factors**
-- **Risk Factor ($R_f$)**  
-  $$
+- **Risk Factor (\( R_f \))**  
+  ```math
   R_f = \frac{W}{V + 1} \times \delta \quad \text{where} \quad \delta \sim U(0.9, 1.3)
-  $$
-  - **Purpose**: Quantifies shipment risk based on weight ($W$) and volume ($V$), with a random perturbation ($\delta$) for realism.
+  ```  
+  - **Purpose**: Quantifies shipment risk based on weight (\( W \)) and volume (\( V \)), with a random perturbation (\( \delta \)) for realism.
 
-- **Time Factor ($T_f$)**  
-  $$
+- **Time Factor (\( T_f \))**  
+  ```math
   T_f = \max(1, \text{Days}(\text{Shipping Date} - \text{Current Date}))
-  $$
+  ```  
   - **Purpose**: Measures urgency, ensuring time-sensitive shipments are prioritized.
 
 ### **Route Segment Evaluation**
-- **Efficiency ($\eta$)**  
-  $$
+- **Efficiency (\( \eta \))**  
+  ```math
   \eta = \frac{\text{Distance}}{\text{Transit Time} + 1}
-  $$
+  ```  
   - **Purpose**: Assesses segment performance, balancing speed and distance.
 
-- **Safety ($S$)**  
-  $$
+- **Safety (\( S \))**  
+  ```math
   S = \max(0, 100 - 0.12 \times \text{Cost} + \epsilon) \quad \text{where} \quad \epsilon \sim U(-5, 5)
-  $$
-  - **Purpose**: Evaluates safety by factoring in cost and random variability ($\epsilon$).
+  ```  
+  - **Purpose**: Evaluates safety by factoring in cost and random variability (\( \epsilon \)).
 
-- **Sustainability Factor ($\sigma$)**  
-  $$
+- **Sustainability Factor (\( \sigma \))**  
+  ```math
   \sigma = \left( \frac{\text{Distance}}{\text{Cost} + 1} \right) \times \left( \frac{S}{100} \right)
-  $$
+  ```  
   - **Purpose**: Measures environmental impact, promoting greener routes.
 
 ### **Overall Route Metrics**
-For a route with $N$ segments:
-- **Overall Efficiency ($\eta_{\text{overall}}$)**  
-  $$
+For a route with \( N \) segments:
+- **Overall Efficiency (\( \eta_{\text{overall}} \))**  
+  ```math
   \eta_{\text{overall}} = \frac{\sum_{i=1}^N \text{Distance}_i}{\sum_{i=1}^N \text{Transit Time}_i}
-  $$
-- **Feasibility ($F$)**  
-  $$
+  ```  
+- **Feasibility (\( F \))**  
+  ```math
   F = \frac{1}{N} \sum_{i=1}^N S_i
-  $$
-- **Sustainability Index ($S_{\text{index}}$)**  
-  $$
+  ```  
+- **Sustainability Index (\( S_{\text{index}} \))**  
+  ```math
   S_{\text{index}} = \frac{1}{N} \sum_{i=1}^N \sigma_i
-  $$
+  ```  
   - **Purpose**: Aggregates segment metrics to evaluate entire routes comprehensively.
 
 ### **Resilience and Innovation Metrics**
-- **Resilience Factor ($R$)**  
-  $$
+- **Resilience Factor (\( R \))**  
+  ```math
   R = \frac{0.6 \times R_f + 0.4 \times F}{T_f + 1}
-  $$
+  ```  
   - **Purpose**: Combines risk and feasibility, adjusted for time urgency, to measure route robustness.
 
-- **Innovation Score ($I$)**  
-  $$
+- **Innovation Score (\( I \))**  
+  ```math
   I = 0.4 \times Q + 0.3 \times \sigma + 0.3 \times R
-  $$
-  - **Purpose**: Integrates predicted quality ($Q$), sustainability, and resilience for a forward-looking metric.
+  ```  
+  - **Purpose**: Integrates predicted quality (\( Q \)), sustainability, and resilience for a forward-looking metric.
 
 ### **Deep Learning Prediction**
-- **Route Quality ($Q$)**  
-  $$
+- **Route Quality (\( Q \))**  
+  ```math
   Q = \tanh \left( \mathbf{w}^T \mathbf{x} + b \right)
-  $$
-  - **Feature Vector ($\mathbf{x}$)**:  
-    $$
+  ```  
+  - **Feature Vector (\( \mathbf{x} \))**:  
+    ```math
     \mathbf{x} = \begin{bmatrix} \text{Total Distance} & \text{Total Cost} & \text{Total Time} & F \end{bmatrix}^T
-    $$
-  - **Purpose**: Predicts route quality using a neural network with weights ($\mathbf{w}$) and bias ($b$).
+    ```  
+  - **Purpose**: Predicts route quality using a neural network with weights (\( \mathbf{w} \)) and bias (\( b \)).
 
 ### **Quantum Annealing Optimization**
 - **Process**: Iteratively perturbs candidate routes, evaluating quality scores with slight randomness to mimic quantum annealing and escape local optima.
 - **Purpose**: Identifies globally optimal routes efficiently.
 
 ### **Fuzzy Logic Ranking**
-- **Fuzzy Score ($s_{\text{fuzzy}}$)**  
-  $$
-  s_{\text{fuzzy}} = Q(r) + \Delta \quad \text{where} \quad \Delta \sim U(-5, 5)
-  $$
-  - **Purpose**: Introduces uncertainty into rankings, enhancing robustness.
+- **Fuzzy Score (\( s_{\text{fuzzy}} \))**  
+  ```math
+  s_{\text{fuzzy}} = Q + \Delta \quad \text{where} \quad \Delta \sim U(-5, 5)
+  ```  
+  - **Purpose**: Introduces uncertainty into rankings, enhancing robustness by adding a random perturbation (\( \Delta \)) to the predicted route quality (\( Q \)).
 
 These models collectively ensure routes are optimized across multiple dimensions, making KaalPath a versatile framework.
 
