@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from datetime import date, timedelta
 import random
 
-# Set page configuration
+
 st.set_page_config(
     page_title="Kaal Path - Multi-Modal Route Selector",
     layout="wide",
@@ -15,17 +15,17 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Load custom CSS for consistent styling
+
 def load_css():
     css = """
     <style>
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f5f6f5;
-        color: #333;
+        background-color: 
+        color: 
     }
     .stButton>button {
-        background-color: #1e88e5;
+        background-color: 
         color: white;
         border: none;
         padding: 12px 24px;
@@ -34,23 +34,23 @@ def load_css():
         transition: background-color 0.3s ease;
     }
     .stButton>button:hover {
-        background-color: #1565c0;
+        background-color: 
     }
     .sidebar .sidebar-content {
-        background: linear-gradient(180deg, #0277bd, #b3e5fc);
+        background: linear-gradient(180deg, 
         color: white;
         padding: 20px;
     }
     h1, h2, h3 {
-        color: #0277bd;
+        color: 
         font-weight: 500;
     }
     .stTextInput>label, .stNumberInput>label, .stSelectbox>label, .stDateInput>label {
         font-weight: bold;
-        color: #424242;
+        color: 
     }
     .metric-card {
-        background-color: #ffffff;
+        background-color: 
         padding: 15px;
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -60,14 +60,14 @@ def load_css():
     """
     st.markdown(css, unsafe_allow_html=True)
 
-# Apply CSS
+
 load_css()
 
-# Title and branding
+
 st.title("🚚 Kaal Path - Multi-Modal Logistics Optimization")
 st.markdown("Optimize cross-border shipments with advanced routing solutions.")
 
-# Sidebar navigation
+
 st.sidebar.image("https://via.placeholder.com/150x50.png?text=Kaal+Path", use_container_width=True)
 st.sidebar.title("Navigation")
 pages = [
@@ -79,7 +79,7 @@ pages = [
 ]
 page = st.sidebar.radio("Go to", pages)
 
-# Function to simulate shipment data
+
 def get_shipment_data():
     data = {
         "Shipment ID": [f"S{i:03d}" for i in range(1, 11)],
@@ -97,7 +97,7 @@ def get_shipment_data():
     }
     return pd.DataFrame(data)
 
-# Function to simulate Quantum Annealing Optimization data
+
 def get_quantum_optimization_data():
     data = {
         "Route ID": [f"R{i:03d}" for i in range(1, 11)],
@@ -106,7 +106,7 @@ def get_quantum_optimization_data():
     }
     return pd.DataFrame(data)
 
-# Function to simulate Fuzzy Logic Ranking data
+
 def get_fuzzy_ranking_data():
     data = {
         "Route ID": [f"R{i:03d}" for i in range(1, 11)],
@@ -115,7 +115,7 @@ def get_fuzzy_ranking_data():
     }
     return pd.DataFrame(data)
 
-# Function to simulate Deep Route Prediction data
+
 def get_route_prediction_data():
     data = {
         "Route ID": [f"R{i:03d}" for i in range(1, 11)],
@@ -125,7 +125,7 @@ def get_route_prediction_data():
     }
     return pd.DataFrame(data)
 
-# Page 1: Shipment & Simulation
+
 def shipment_simulation_page():
     st.header("Shipment Input & Route Simulation")
     st.markdown("Enter shipment details and simulate multi-modal routes.")
@@ -182,7 +182,7 @@ def shipment_simulation_page():
                 except Exception as e:
                     st.error(f"Error during simulation: {str(e)}")
 
-# Page 2: Quantum Annealing Optimization
+
 def quantum_annealing_page():
     st.header("Quantum Annealing Optimization")
     st.markdown("Optimize routes using quantum annealing.")
@@ -223,7 +223,7 @@ def quantum_annealing_page():
                 except Exception as e:
                     st.error(f"Failed to run quantum optimization: {str(e)}")
 
-# Page 3: Fuzzy Logic Ranking
+
 def fuzzy_logic_page():
     st.header("Fuzzy Logic Route Ranking")
     st.markdown("Rank routes based on fuzzy logic.")
@@ -244,7 +244,7 @@ def fuzzy_logic_page():
                 except Exception as e:
                     st.error(f"Failed to rank routes: {str(e)}")
 
-# Page 4: Deep Route Prediction
+
 def deep_route_prediction_page():
     st.header("Deep Route Prediction")
     st.markdown("Predict route quality with deep learning.")
@@ -269,18 +269,18 @@ def deep_route_prediction_page():
                 except Exception as e:
                     st.error(f"Failed to predict route quality: {str(e)}")
 
-# Page 5: Enhanced Dashboard
+
 def dashboard_page():
     st.header("Logistics Dashboard")
     st.markdown("Monitor and analyze your cross-border shipment performance.")
 
-    # Get simulated data from all pages
+    
     df_shipment = get_shipment_data()
     df_quantum = get_quantum_optimization_data()
     df_fuzzy = get_fuzzy_ranking_data()
     df_prediction = get_route_prediction_data()
 
-    # Tabs for organizing visualizations
+    
     tab1, tab2, tab3, tab4 = st.tabs([
         "Shipment & Simulation",
         "Quantum Annealing Optimization",
@@ -288,7 +288,7 @@ def dashboard_page():
         "Deep Route Prediction"
     ])
 
-    # Tab 1: Shipment & Simulation
+    
     with tab1:
         st.subheader("Shipment & Simulation Metrics")
         col1, col2, col3, col4, col5 = st.columns(5)
@@ -313,29 +313,29 @@ def dashboard_page():
             st.metric("Total Volume", f"{df_shipment['Volume (m³)'].sum():.2f} m³")
             st.markdown('</div>', unsafe_allow_html=True)
 
-        # Interactive Data Table
+        
         st.subheader("Shipment Data")
         st.dataframe(df_shipment)
 
-        # Pie Chart: Cargo Type Distribution
+        
         st.subheader("Cargo Type Distribution")
         cargo_counts = df_shipment['Cargo Type'].value_counts()
         fig_pie = px.pie(cargo_counts, names=cargo_counts.index, values=cargo_counts.values, title="Cargo Type Distribution")
         st.plotly_chart(fig_pie, use_container_width=True)
 
-        # Line Chart: Shipment Costs Over Time
+        
         st.subheader("Shipment Costs Over Time")
         df_shipment['Shipping Date'] = pd.to_datetime(df_shipment['Shipping Date'])
         df_sorted = df_shipment.sort_values('Shipping Date')
         fig_line = px.line(df_sorted, x='Shipping Date', y='Cost ($)', title="Shipment Costs Over Time", markers=True)
         st.plotly_chart(fig_line, use_container_width=True)
 
-        # Scatter Plot: Distance vs Time
+        
         st.subheader("Distance vs Time by Transport Mode")
         fig_scatter = px.scatter(df_shipment, x='Distance (km)', y='Time (hrs)', color='Transport Modes', size='Weight (kg)', hover_data=['Shipment ID'], title="Distance vs Time by Transport Mode")
         st.plotly_chart(fig_scatter, use_container_width=True)
 
-        # Heatmap: Correlations
+        
         st.subheader("Correlation Heatmap")
         corr_matrix = df_shipment[['Distance (km)', 'Time (hrs)', 'Cost ($)', 'Efficiency']].corr()
         fig_heatmap = go.Figure(data=go.Heatmap(
@@ -347,12 +347,12 @@ def dashboard_page():
         fig_heatmap.update_layout(title="Correlation Heatmap")
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
-        # Box Plot: Cost Distribution by Transport Mode
+        
         st.subheader("Cost Distribution by Transport Mode")
         fig_box = px.box(df_shipment, x='Transport Modes', y='Cost ($)', title="Cost Distribution by Transport Mode")
         st.plotly_chart(fig_box, use_container_width=True)
 
-    # Tab 2: Quantum Annealing Optimization
+    
     with tab2:
         st.subheader("Quantum Annealing Optimization Metrics")
         col1, col2 = st.columns(2)
@@ -365,12 +365,12 @@ def dashboard_page():
             st.metric("Best Route", df_quantum.loc[df_quantum['Optimization Score'].idxmax(), 'Route ID'])
             st.markdown('</div>', unsafe_allow_html=True)
 
-        # Bar Chart: Optimization Scores by Route
+        
         st.subheader("Optimization Scores by Route")
         fig_bar_quantum = px.bar(df_quantum, x='Route ID', y='Optimization Score', color='Transport Mode', title="Optimization Scores by Route")
         st.plotly_chart(fig_bar_quantum, use_container_width=True)
 
-    # Tab 3: Fuzzy Logic Ranking
+    
     with tab3:
         st.subheader("Fuzzy Logic Ranking Metrics")
         col1, col2 = st.columns(2)
@@ -383,14 +383,14 @@ def dashboard_page():
             st.metric("Top Ranked Route", df_fuzzy.loc[df_fuzzy['Ranking Score'].idxmax(), 'Route ID'])
             st.markdown('</div>', unsafe_allow_html=True)
 
-        # Line Chart: Ranking Trends Over Time
+        
         st.subheader("Ranking Trends Over Time")
         df_fuzzy['Ranking Date'] = pd.to_datetime(df_fuzzy['Ranking Date'])
         df_fuzzy_sorted = df_fuzzy.sort_values('Ranking Date')
         fig_line_fuzzy = px.line(df_fuzzy_sorted, x='Ranking Date', y='Ranking Score', color='Route ID', title="Ranking Trends Over Time", markers=True)
         st.plotly_chart(fig_line_fuzzy, use_container_width=True)
 
-    # Tab 4: Deep Route Prediction
+    
     with tab4:
         st.subheader("Deep Route Prediction Metrics")
         col1, col2 = st.columns(2)
@@ -403,12 +403,12 @@ def dashboard_page():
             st.metric("Most Accurate Route", df_prediction.loc[df_prediction['Prediction Accuracy (%)'].idxmax(), 'Route ID'])
             st.markdown('</div>', unsafe_allow_html=True)
 
-        # Scatter Plot: Predicted vs Actual Time
+        
         st.subheader("Predicted vs Actual Time")
         fig_scatter_pred = px.scatter(df_prediction, x='Predicted Time (hrs)', y='Actual Time (hrs)', color='Route ID', size='Prediction Accuracy (%)', hover_data=['Route ID'], title="Predicted vs Actual Time")
         st.plotly_chart(fig_scatter_pred, use_container_width=True)
 
-# Page routing
+
 if page == "Shipment & Simulation":
     shipment_simulation_page()
 elif page == "Quantum Annealing Optimization":
@@ -420,6 +420,6 @@ elif page == "Deep Route Prediction":
 elif page == "Dashboard":
     dashboard_page()
 
-# Footer
+
 st.markdown("---")
 st.markdown("© 2025 Kaal Path | Powered by IIT Bombay LogiTHON")
